@@ -29,20 +29,33 @@ let vm = Vue.createApp({
     unmounted() {
         console.log('unmounted() function called!')
     }
+}).mount('#app')
+
+let vm3 = Vue.createApp({
+
 })
 
-vm.mount('#app')
+vm3.component('hello', {
+    template: '<h1>{{message}}</h1>',
+    data() {
+        return {
+            message: 'Hello World Bitch'
+        }
+    }
+})
+
+vm3.mount('#app3')
 
 let vm2 = Vue.createApp({
-  data() {
-    return {
-      message: 'Hello World'
+    data() {
+        return {
+            message: 'Hello World'
+        }
+    },
+    render() {
+        return Vue.h(
+            'h1',
+            this.message
+        )
     }
-  },
-  render() {
-    return Vue.h(
-        'h1',
-        this.message
-    )
-  }
 }).mount('#app2')
